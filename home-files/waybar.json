@@ -1,0 +1,70 @@
+{
+  "height": 40,
+  "spacing": 5,
+  "position": "top",
+  "modules-left": [ "custom/launcher", "hyprland/workspaces" ],
+  "modules-center": [ "clock" ],
+  "modules-right": [ "pulseaudio", "network", "battery", "cpu", "memory" ],
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "persistent-workspaces": {
+      "*": 5
+    },
+    "format": "{icon}",
+    "format-icons": {
+      "1": " ",
+      "2": " ",
+      "3": " ",
+      "4": " ",
+      "5": " "
+    }
+  },
+  "clock": {
+    "format": "{:%I:%M %p}"
+  },
+  "memory": {
+    "format": "  {}%"
+  },
+  "cpu": {
+    "format": "  {usage}%"
+  },
+  "network": {
+    "format-wifi": "  {essid}"
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}  {capacity}%",
+    "format-full": "{icon}  {capacity}%",
+    "format-charging": "󱐋  {capacity}%",
+    "format-plugged": "  {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": ["", "", "", "", ""]
+  },
+  "custom/launcher": {
+    "format": "{}",
+    "exec": "echo '   '",
+    "on-click": "sleep 0.5 && tofi-drun|xargs hyprctl dispatch exec"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{icon} {volume}% ",
+    "format-bluetooth-muted": "  ",
+    "format-muted": "   ",
+    "format-source": "{volume}% ",
+    "format-source-muted": "   ",
+    "format-icons": {
+      "headphone": " ",
+      "hands-free": " ",
+      "headset": " ",
+      "phone": " ",
+      "portable": " ",
+      "car": " ",
+      "default": ["", " ", " "]
+    },
+    "on-click": "pavucontrol"
+  }
+}
+
