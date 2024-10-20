@@ -23,7 +23,7 @@
       size = 999999;
       path = "${config.xdg.dataHome}/zsh/history";
     };
-    initExtraFirst = "pfetch;PROMPT=\"%F{blue}┌┤%f%B%F{cyan}%n%f%b%F{yellow}@%f%F{magenta}%m%f%F{blue}│\"$'\n'\"%F{blue}└ %~   %B%F{green}>%b \"; RPROMPT=\"%F{blue}%W-%t\"";
+    initExtraFirst = "pfetch;PROMPT=\"%F{blue}┌┤%f%B%F{cyan}%n%f%b%F{yellow}@%f%F{magenta}%m%f%F{blue}│\"$'\n'\"%F{blue}└ %~   %B%F{green}->%b \"; RPROMPT=\"%F{blue}%W-%t\"";
 # Make ZSH start faster
     completionInit = "compinit";
   };

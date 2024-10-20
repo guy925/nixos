@@ -4,7 +4,7 @@ const WINDOW_NAME = "applauncher"
 /** @param {import('resource:///com/github/Aylur/ags/service/applications.js').Application} app */
 const AppItem = app => Widget.Button({
     on_clicked: () => {
-        app.closeWindow(WINDOW_NAME)
+        App.closeWindow(WINDOW_NAME)
         app.launch()
     },
     attribute: { app },

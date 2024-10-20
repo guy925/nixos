@@ -1,7 +1,7 @@
 {
   programs.btop = {
+    enable = true;
     settings = {
-      color_theme = "tokyo-night";
       theme_backround = false;
       rounded_corners = false;
       graph_symbol = "block";

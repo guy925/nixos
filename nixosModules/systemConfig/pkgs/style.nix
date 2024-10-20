@@ -10,7 +10,7 @@
     stylix = {
       enable = true;
       image = ./../../userConfig/files/wall.png;
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.style.theme}.yaml";
+      base16Scheme = ./blueberry.yaml;
       targets = {
 	grub.useImage = true;
       };      fonts = {

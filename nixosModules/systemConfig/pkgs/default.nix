@@ -5,6 +5,7 @@
       ./hyprland.nix
       ./printing.nix
       ./touchpad.nix
+      ./boot.nix
       ./fileman.nix
       ./nvim.nix
       ./ssh.nix
@@ -19,7 +20,7 @@
       polkit-kde-agent
       findutils
       newt
-      emacs
+      playerctl
       killall
       starship
       tofi

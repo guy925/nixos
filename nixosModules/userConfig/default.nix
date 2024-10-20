@@ -10,7 +10,6 @@
       ./kitty.nix
       ./pkgs.nix
       ./firefox.nix
-      ./tofi.nix
       ./vim.nix
       ./zsh.nix
       ./fileman.nix

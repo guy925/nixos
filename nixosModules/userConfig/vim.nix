@@ -72,6 +72,7 @@
       luasnip.enable = true;
       noice.enable = true;
       alpha.enable = true;
+      nvim-colorizer.enable = true;
       alpha.theme = "dashboard";
       lsp = {
 	enable = true;

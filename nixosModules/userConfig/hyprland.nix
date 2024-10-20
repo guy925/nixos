@@ -63,9 +63,9 @@
       "$mod" = "SUPER";
       bind =
 	[
-	"$mod, D, exec, tofi-drun --drun-launch=true"
+	"$mod, D, exec, ags -t applauncher"
 	  "$mod, Q, killactive"
-	  "CONTROL ALT, DELETE, exec, kitty --hold --class=prompt whiptail --yesno \"Do you want to exit?\" 10 50  "
+	  "CONTROL ALT, DELETE, exec, kitty --hold --class=prompt whiptail --yesno \"Do you want to exit?\" 10 50 && hyprctl dispatch exit "
 	  "$mod, RETURN, exec, kitty"
 	  "$mod, S, togglefloating"
 	  ",XF86AudioLowerVolume, exec, wpctl set-volume  @DEFAULT_AUDIO_SINK@ 5%-"

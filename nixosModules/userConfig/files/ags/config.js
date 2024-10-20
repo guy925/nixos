@@ -1,28 +1,44 @@
 const hyprland = await Service.import("hyprland")
 const audio = await Service.import("audio")
 const battery = await Service.import("battery")
+ const mpris = await Service.import("mpris")
 const systemtray = await Service.import("systemtray")
-const { query } = await Service.import("applications")
 import { NotificationPopups } from "./agsModules/notificationPopups.js"
 import { applauncher } from "./agsModules/launcher.js"
-
-const date = Variable("", {
-    poll: [1000, 'date "+%I:%M %p"'],
-})
+import { Clock } from "./Clock.js"
 
 // widgets can be only assigned as a child in one container
 // so to make a reuseable widget, make it a function
 // then you can simply instantiate one by calling it
 
+function Media() {
+    const label = Utils.watch("", mpris, "player-changed", () => {
+        if (mpris.players[0]) {
+            const { track_artists, track_title } = mpris.players[0]
+            return `${track_artists.join(", ")} - ${track_title}`
+        } else {
+            return "Nothing is playing"
+        }
+    })
+
+    return Widget.Button({
+        class_name: "media",
+        on_primary_click: () => mpris.getPlayer("")?.playPause(),
+        on_scroll_up: () => mpris.getPlayer("")?.next(),
+        on_scroll_down: () => mpris.getPlayer("")?.previous(),
+        child: Widget.Label({ label }),
+    })
+}
+
+
 function Workspaces() {
-  let activeId = hyprland.active.workspace.bind("id")
   return Widget.Box({
     class_name: `workspaces`,
     homogeneous: false,
     vertical: false,
     spacing: 0,
     // children: Array.from({ length:6 },(_,i) => i + 1).map( (i) => Widget.Button({
-    children:  ["1", "2", "3", "4", "5"].map( (v,i) => {
+    children:  [" 󰈹 ", "  ", "  ", "  "].map( (v,i) => {
       let ws_id = i + 1
       return Widget.Button({
         attribute: `${ws_id}`,
@@ -59,16 +75,10 @@ function Workspaces() {
 });
 }
 
-function Clock() {
-    return Widget.Label({
-        class_name: "clock",
-        label: date.bind(),
-    })
-}
-
 function Launcher() {
     return Widget.Button({
-      child: Widget.Label(` `),
+      on_clicked: () => { App.ToggleWindow("applauncher") },
+      child: Widget.Label(`  `),
       class_name: "launchbutton",
     })
 }
@@ -160,7 +170,7 @@ function Center() {
     return Widget.Box({
         spacing: 8,
         children: [
-            Clock(),
+            Media(),
         ],
     })
 }
@@ -173,6 +183,7 @@ function Right() {
             Volume(),
             BatteryLabel(),
             SysTray(),
+	    Clock(),
         ],
     })
 }
