@@ -18,10 +18,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ags.url = "github:Aylur/ags";
-        nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
-  };
+ };
 
-  outputs = { self, nixpkgs, nixvim, nix-doom-emacs, ... }@inputs: {
+  outputs = { self, nixpkgs, nixvim, ... }@inputs: {
     nixosConfigurations.andromeda = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [

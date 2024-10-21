@@ -24,7 +24,7 @@
   programs.nixvim = {
     opts.number = true;
     enable = true;
-    opts.relativenumber = true;
+    #opts.relativenumber = true;
     opts.shiftwidth = 2;
     defaultEditor = true;
     globals.mapleader = " ";

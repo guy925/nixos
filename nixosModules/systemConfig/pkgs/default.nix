@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   imports = [
     ./audio.nix
@@ -14,32 +14,30 @@
       ./style.nix
       ./podman.nix
   ];
-  environment.systemPackages = with pkgs; [
-    wget
-      distrobox
-      polkit-kde-agent
-      findutils
-      newt
-      playerctl
-      killall
-      starship
-      tofi
-      nil
-      git
-      kitty
-      swww
-      hyprshot
-      hypridle
-      terminus_font
-      terminus_font_ttf
-      grim
-      slurp
-      ripgrep
-      wl-clipboard
-      pfetch
-      brightnessctl
-      btop
-      libnotify
+  environment.systemPackages = [
+    pkgs.wget
+    pkgs.home-manager
+      pkgs.distrobox
+      pkgs.polkit-kde-agent
+      pkgs.findutils
+      pkgs.newt
+      pkgs.playerctl
+      pkgs.killall
+      pkgs.starship
+      pkgs.tofi
+      pkgs.nil
+      pkgs.git
+      pkgs.kitty
+      pkgs.swww
+      pkgs.hyprshot
+      pkgs.hypridle
+      pkgs.grim
+      pkgs.slurp
+      pkgs.ripgrep
+      pkgs.wl-clipboard
+      pkgs.pfetch
+      pkgs.brightnessctl
+      pkgs.btop
+      pkgs.libnotify
       ];
-
 }

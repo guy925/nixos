@@ -20,6 +20,11 @@ label {
     font-weight: bold;
 }
 
+button:active {
+    background-color: @theme_selected_bg_color;
+    color: @theme_bg_color;
+}
+
 .workspaces button.focused {
     border-bottom: 3px solid @theme_selected_bg_color;
 }

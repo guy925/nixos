@@ -1,6 +1,6 @@
 { config, ... }:
 {
- programs.zsh = {
+  programs.zsh = {
     enable = true;
     enableCompletion = true;
     autosuggestion.enable = true;
@@ -23,7 +23,17 @@
       size = 999999;
       path = "${config.xdg.dataHome}/zsh/history";
     };
-    initExtraFirst = "pfetch;PROMPT=\"%F{blue}┌┤%f%B%F{cyan}%n%f%b%F{yellow}@%f%F{magenta}%m%f%F{blue}│\"$'\n'\"%F{blue}└ %~   %B%F{green}->%b \"; RPROMPT=\"%F{blue}%W-%t\"";
+    initExtraFirst = "pfetch
+      precmd() {
+	if [[ $? != 0 ]]
+	then
+	  PROMPT=\"%F{blue}┌┤%f%B%F{cyan}%n%f%b%F{yellow}@%f%F{magenta}%m%f%F{blue}│\"$'\n'\"%F{blue}└ %~   %B%F{red}->%b \"
+	else
+	  PROMPT=\"%F{blue}┌┤%f%B%F{cyan}%n%f%b%F{yellow}@%f%F{magenta}%m%f%F{blue}│\"$'\n'\"%F{blue}└ %~   %B%F{green}->%b \"
+	fi
+      }
+    RPROMPT=\"%F{blue}%W-%t\"
+      ";
 # Make ZSH start faster
     completionInit = "compinit";
   };
