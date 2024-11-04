@@ -1,28 +1,29 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, ... }: {
+  options = {
+    nvidia.enable = 
+      lib.mkEnableOption "enables nvidia drivers";
+  };
+  config = lib.mkIf config.nvidia.enable {
+    boot.kernelParams = [
+      "nvidia_drm.fbdev=1"
+    ];
+    hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
+    hardware.graphics = {
+      enable = true;
+    };
+    services.xserver.videoDrivers = ["nvidia"];
 
-{
-	options = {
-		nvidia.enable = 
-			lib.mkEnableOption "enables nvidia drivers";
-	};
-	config = lib.mkIf config.nvidia.enable {
-		hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
-		hardware.graphics = {
-			enable = true;
-		};
-		services.xserver.videoDrivers = ["nvidia"];
+    hardware.nvidia = {
 
-		hardware.nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = false;
 
-			modesetting.enable = true;
-			powerManagement.enable = false;
+      powerManagement.finegrained = false;
 
-			powerManagement.finegrained = false;
+      open = false;
 
-			open = false;
+      nvidiaSettings = true;
 
-			nvidiaSettings = true;
-
-		};
-	};
+    };
+  };
 }

@@ -1,5 +1,5 @@
 {
-  description = "Nixos config flake";
+  description = "The Galaxynix flake";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -18,25 +18,38 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ags.url = "github:Aylur/ags";
- };
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-1.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprland.url = "github:hyprwm/Hyprland";
+     nh.url = "github:viperML/nh";
+    nix-output-monitor.url = "github:maralorn/nix-output-monitor";
+    comma.url = "github:nix-community/comma";
+    schizofox.url = "github:schizofox/schizofox";
+    };
 
-  outputs = { self, nixpkgs, nixvim, ... }@inputs: {
+  outputs = { self, nixpkgs, lix-module, nixvim, nh, nix-output-monitor, comma, ... }@inputs: {
     nixosConfigurations.andromeda = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
       specialArgs = {inherit inputs;};
       modules = [
-	./hosts/andromeda/config.nix
+	./nixosModules
 	  ./hardware-configuration.nix
 	  inputs.home-manager.nixosModules.default
 	  inputs.stylix.nixosModules.stylix
+	  lix-module.nixosModules.default
       ];
     };
     nixosConfigurations.segue = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
       specialArgs = {inherit inputs;};
       modules = [
-	./hosts/segue/config.nix
+	./nixosModules/systemConfig/config.nix
 	  ./hardware-configuration.nix
 	  inputs.home-manager.nixosModules.default
 	  inputs.stylix.nixosModules.stylix
+	  lix-module.nixosModules.default
       ];
     };
   };

@@ -37,8 +37,8 @@ function Workspaces() {
     homogeneous: false,
     vertical: false,
     spacing: 0,
-    // children: Array.from({ length:6 },(_,i) => i + 1).map( (i) => Widget.Button({
-    children:  [" 󰈹 ", "  ", "  ", "  "].map( (v,i) => {
+  // children: Array.from({ length:6 },(_,i) => i + 1).map( (i) => Widget.Button({
+    children:  ["一", " 二", "三", "四"].map( (v,i) => {
       let ws_id = i + 1
       return Widget.Button({
         attribute: `${ws_id}`,
@@ -78,7 +78,7 @@ function Workspaces() {
 function Launcher() {
     return Widget.Button({
       on_clicked: () => { App.ToggleWindow("applauncher") },
-      child: Widget.Label(`  `),
+      child: Widget.Label(`ツ`),
       class_name: "launchbutton",
     })
 }

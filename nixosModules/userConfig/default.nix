@@ -11,6 +11,7 @@
       ./pkgs.nix
       ./firefox.nix
       ./vim.nix
+      ./fastfetch.nix
       ./zsh.nix
       ./fileman.nix
       inputs.nixvim.homeManagerModules.nixvim 

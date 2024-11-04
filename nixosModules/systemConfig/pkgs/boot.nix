@@ -19,6 +19,6 @@
 	"panic=1"
     ];
   };
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-}
+  services.greetd.enable = true;
+  programs.regreet.enable = true;
+  }

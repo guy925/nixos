@@ -12,22 +12,8 @@
       image = ./../../userConfig/files/wall.png;
       base16Scheme = ./blueberry.yaml;
       targets = {
-	grub.useImage = true;
-      };      fonts = {
-	serif = config.stylix.fonts.sansSerif;
-
-	sansSerif = config.stylix.fonts.monospace;
-
-	monospace = {
-	  package = pkgs.nerdfonts;
-	  name = "JetbrainsMono NF Semibold";
-	};
-
-	emoji = {
-	  package = pkgs.noto-fonts-emoji;
-	  name = "Noto Color Emoji";
-	};
-      };
+	regreet.enable = true;
+      };      
       cursor = {
 	package = pkgs.bibata-cursors;
 	name = "Bibata-Modern-Classic";

@@ -1,7 +1,12 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./audio.nix
+      ./waydroid.nix
+      ./nh.nix
+      ./keys.nix
+      ./fonts.nix
+      ./nvidia.nix
       ./hyprland.nix
       ./printing.nix
       ./touchpad.nix
@@ -13,10 +18,12 @@
       ./zsh.nix
       ./style.nix
       ./podman.nix
+      ./sudo.nix
   ];
   environment.systemPackages = [
     pkgs.wget
-    pkgs.home-manager
+      pkgs.noto-fonts-cjk-sans
+      pkgs.home-manager
       pkgs.distrobox
       pkgs.polkit-kde-agent
       pkgs.findutils
@@ -35,7 +42,6 @@
       pkgs.slurp
       pkgs.ripgrep
       pkgs.wl-clipboard
-      pkgs.pfetch
       pkgs.brightnessctl
       pkgs.btop
       pkgs.libnotify

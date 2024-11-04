@@ -8,6 +8,7 @@
       mouse_hide_wait = "-1.0";
       window_padding_width = 15;
       font_size = 12;
+      cursor_trail = 3; 
 
 # Colors
       background = "#222436";

@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   programs.neovide= {
     enable = true;
@@ -24,8 +23,9 @@
   programs.nixvim = {
     opts.number = true;
     enable = true;
-    #opts.relativenumber = true;
+    opts.relativenumber = true;
     opts.shiftwidth = 2;
+    opts.nuw = 1;
     defaultEditor = true;
     globals.mapleader = " ";
     keymaps = [
@@ -48,8 +48,8 @@
     {
       action = "<cmd>tabprev<CR>";
       key = "<C-S-Tab>";
-     }
-     {
+    }
+    {
       action = "<cmd>NvimTreeToggle<CR>";
       key = "<C-o>";
     }
@@ -72,13 +72,17 @@
       luasnip.enable = true;
       noice.enable = true;
       alpha.enable = true;
+      statuscol.enable = true;
+      lsp-format.enable = true;
       nvim-colorizer.enable = true;
+      none-ls.enable = true;
       alpha.theme = "dashboard";
       lsp = {
 	enable = true;
 	servers = {
 	  ts_ls.enable = true;
 	  lua_ls.enable = true;
+	  nixd.enable = true;
 	  rust_analyzer.enable = true;
 	  rust_analyzer.installCargo = true;
 	  rust_analyzer.installRustc = true;
@@ -86,4 +90,5 @@
       };
     };
   };
+  stylix.targets.nixvim.plugin = "base16-nvim";
 }

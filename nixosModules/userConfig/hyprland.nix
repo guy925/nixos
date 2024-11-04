@@ -1,4 +1,3 @@
-{ lib, config, ... }:
 {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -9,6 +8,7 @@
 	  "swww img .wall"
 	  "systemctl --user start plasma-polkit-agent"
 	  "ags &"
+	  "fcitx5 &"
       ];
       general = {
 	gaps_in = "20";
@@ -86,6 +86,9 @@
 	  "$mod CONTROL, J, resizeactive, 0 70"
 	  "$mod CONTROL, K, resizeactive, 0 -70"
 	  "$mod CONTROL, L, resizeactive, 70 0"
+	  "$mod, F, fullscreen, 0"
+	  "$mod, mouse_down, workspace, e-1"
+	  "$mod, mouse_up, workspace, e+1"
 	  ]
 	  ++(
 	      builtins.concatLists (builtins.genList (i:
